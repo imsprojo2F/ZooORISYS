@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zooori.dao.OperateLogMapper">
+	<resultMap id="BaseResultMap" type="com.zooori.pojo.OperateLog">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="uid" property="uid" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="INTEGER" />
+		<result column="create_time" property="create_type" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<insert id="add" parameterType="com.zooori.pojo.OperateLog">
+		insert into operate_log (
+			uid,operate,create_time
+		)values(
+			#{uid,jdbcType=VARCHAR},
+			#{operate,jdbcType=INTEGER},
+			#{create_time,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<delete id="deleteById" parameterType="java.lang.String">
+		<![CDATA[DELETE from operate_log where id in
+		]]>
+		<foreach item="item" collection="array" open="(" separator=","
+			close=")">
+			#{item}
+		</foreach>
+	</delete>
+	
+	<select id="listAll" resultType="Map"  parameterType="Map">
+		select * from operate_log where 1=1
+		<if test="key !=null and key!=''">
+			and (account like '%${key}%' OR name LIKE '%${key}%' )
+		</if>
+	</select>
+	
+	<select id="selectByPage" parameterType="Map" resultType="Map">
+		select * from operate_log where 1=1
+		<if test="key !=null and key!=''">
+			where (account like '%${key}%' OR name LIKE '%${key}%' )
+		</if>
+		<if test="sort !=null and sort!='' and order !=null and order !=''">
+			Order by ${sort} ${order}
+		</if>
+		LIMIT ${page},${rows}
+	</select>
+	
+</mapper>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zooori.dao.SurveySYSMapper">
+	<resultMap id="BaseResultMap" type="com.zooori.pojo.SurveySYS">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="ip" property="ip" jdbcType="VARCHAR" />
+		<result column="survey01" property="survey01" jdbcType="INTEGER" />
+		<result column="survey02" property="survey02" jdbcType="INTEGER" />
+		<result column="survey03" property="survey03" jdbcType="INTEGER" />
+		<result column="survey04" property="survey04" jdbcType="INTEGER" />
+		<result column="survey05" property="survey05" jdbcType="INTEGER" />
+		<result column="survey06" property="survey06" jdbcType="INTEGER" />
+		<result column="survey07" property="survey07" jdbcType="INTEGER" />
+		<result column="survey08" property="survey08" jdbcType="INTEGER" />
+		<result column="survey09" property="survey09" jdbcType="INTEGER" />
+		<result column="survey10" property="survey10" jdbcType="INTEGER" />
+		<result column="survey11" property="survey11" jdbcType="INTEGER" />
+		<result column="survey12" property="survey12" jdbcType="INTEGER" />
+		<result column="survey13" property="survey13" jdbcType="INTEGER" />
+		<result column="survey14" property="survey14" jdbcType="INTEGER" />
+		<result column="survey15" property="survey15" jdbcType="INTEGER" />
+		<result column="survey16" property="survey16" jdbcType="INTEGER" />
+		<result column="survey17" property="survey17" jdbcType="INTEGER" />
+		<result column="survey18" property="survey18" jdbcType="INTEGER" />
+		<result column="survey19" property="survey19" jdbcType="INTEGER" />
+		<result column="demand" property="demand" jdbcType="VARCHAR" />
+		<result column="mail" property="mail" jdbcType="VARCHAR" />
+		<result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<insert id="add" parameterType="com.zooori.pojo.SurveySYS">
+		insert into survey_sys (
+			ip,survey01,survey02,survey03,survey04,survey05,survey06,survey07,survey08,survey09,survey10,survey11,survey12,survey13,survey14,survey15,survey16,survey17,survey18,survey19,
+			demand,mail,create_time
+		)values(
+			#{ip,jdbcType=VARCHAR},
+			#{survey01,jdbcType=INTEGER},
+			#{survey02,jdbcType=INTEGER},
+			#{survey03,jdbcType=INTEGER},
+			#{survey04,jdbcType=INTEGER},
+			#{survey05,jdbcType=INTEGER},
+			#{survey06,jdbcType=INTEGER},
+			#{survey07,jdbcType=INTEGER},
+			#{survey08,jdbcType=INTEGER},
+			#{survey09,jdbcType=INTEGER},
+			#{survey10,jdbcType=INTEGER},
+			#{survey11,jdbcType=INTEGER},
+			#{survey12,jdbcType=INTEGER},
+			#{survey13,jdbcType=INTEGER},
+			#{survey14,jdbcType=INTEGER},
+			#{survey15,jdbcType=INTEGER},
+			#{survey16,jdbcType=INTEGER},
+			#{survey17,jdbcType=INTEGER},
+			#{survey18,jdbcType=INTEGER},
+			#{survey19,jdbcType=INTEGER},
+			#{demand,jdbcType=VARCHAR},
+			#{mail,jdbcType=VARCHAR},
+			NOW()
+		)
+	</insert>
+	
+	<delete id="deleteById" parameterType="java.lang.String">
+		<![CDATA[DELETE from survey_sys where id in
+		]]>
+		<foreach item="item" collection="array" open="(" separator=","
+			close=")">
+			#{item}
+		</foreach>
+	</delete>
+	
+	<update id="updateById" parameterType="com.zooori.pojo.User">
+		update survey_sys
+		<set>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	
+	
+	<select id="listAll" resultType="java.util.Map"  parameterType="java.util.Map">
+		select * from survey_sys where 1=1
+		<if test="key !=null and key!=''">
+			and (account like '%${key}%' OR name LIKE '%${key}%' )
+		</if>
+	</select>
+	
+	<select id="selectByPage" parameterType="java.util.Map" resultType="java.util.Map">
+		select * from survey_sys 
+		<if test="key !=null and key!=''">
+			where (account like '%${key}%' OR name LIKE '%${key}%' )
+		</if>
+		<if test="sort !=null and sort!='' and order !=null and order !=''">
+			Order by ${sort} ${order}
+		</if>
+		LIMIT ${page},${rows}
+	</select>
+	
+</mapper>

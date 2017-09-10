@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zooori.dao.AdminMapper">
+	<resultMap id="BaseResultMap" type="com.zooori.pojo.Admin">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="account" property="account" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="zan_count" property="zanCount" jdbcType="INTEGER" />
+	</resultMap>
+	<resultMap id="IPMap" type="com.zooori.pojo.IPList">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="admin_id" property="adminId" jdbcType="INTEGER" />
+		<result column="ip" property="ip" jdbcType="VARCHAR" />
+		<result column="datetime" property="datetime" jdbcType="TIMESTAMP" />
+		<result column="isvalid" property="isValid" jdbcType="INTEGER" />
+	</resultMap>
+	<select id="getAllAdmin" resultMap="BaseResultMap" >
+		select * from admin ;
+	</select>
+	<select id="getAllIPList" resultMap="IPMap" >
+ 		select * from ip_list where ip=#{0} AND (datetime BETWEEN CURDATE() AND CURDATE()+1) ORDER BY id DESC LIMIT 0,4
+	</select>
+	
+	<insert id="addFabulou" parameterType="com.zooori.pojo.IPList">
+		insert into ip_list (admin_id,ip,datetime,isvalid)
+		values(
+		#{adminId,jdbcType=INTEGER}, 
+		#{ip,jdbcType=VARCHAR},
+		#{datetime,jdbcType=TIMESTAMP},
+		#{isValid,jdbcType=INTEGER}
+		)
+	</insert>
+	<update id="updateAdminFabuloup" parameterType="java.lang.Integer">
+		update admin
+		<set>
+			zan_count = zan_count+1
+		</set>
+		where id = #{id,jdbcType=INTEGER};
+	</update>
+	<update id="updateAdminFabuloud" parameterType="java.lang.Integer">
+		update admin
+		<set>
+			zan_count = zan_count-1
+		</set>
+		where id = #{id,jdbcType=INTEGER};
+	</update>
+	<update id="updateAdminFabulou" parameterType="com.zooori.pojo.IPList">
+		update ip_list
+		<set>
+			<if test="isValid != null">
+				isvalid = #{isValid,jdbcType=INTEGER},
+			</if>
+			<if test="datetime != null">
+				datetime = #{datetime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where admin_id = #{adminId,jdbcType=INTEGER} AND ip = #{ip};
+	</update>
+</mapper>

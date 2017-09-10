@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zooori.dao.DemandSYSMapper">
+	<resultMap id="BaseResultMap" type="com.zooori.pojo.DemandSYS">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+		<result column="mail" property="mail" jdbcType="VARCHAR" />
+		<result column="demand" property="demand" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="update_time" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<insert id="add" parameterType="com.zooori.pojo.DemandSYS">
+		insert into demand_sys (
+			name,phone,mail,demand,create_time
+		)values(
+			#{name,jdbcType=VARCHAR},
+			#{phone,jdbcType=VARCHAR},
+			#{mail,jdbcType=VARCHAR},
+			#{demand,jdbcType=VARCHAR},
+			NOW()
+		)
+	</insert>
+	
+	<delete id="deleteById" parameterType="java.lang.String">
+		<![CDATA[DELETE from demand_sys where id in
+		]]>
+		<foreach item="item" collection="array" open="(" separator=","
+			close=")">
+			#{item}
+		</foreach>
+	</delete>
+	
+	<update id="updateById" parameterType="com.zooori.pojo.DemandSYS">
+		update demand_sys
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				phone = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="mail != null">
+				mail = #{mail,jdbcType=VARCHAR},
+			</if>
+			<if test="demand != null">
+				demand = #{demand,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="address != null">
+				address = #{address,jdbcType=VARCHAR},
+			</if>	
+			<if test="sign_from != null">
+				sign_from = #{sign_from,jdbcType=INTEGER},
+			</if>		
+			<if test="update_time != null">
+				update_time = NOW(),
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="listAll" resultMap="BaseResultMap"  parameterType="com.zooori.pojo.QueryParameters">
+		select * from demand_sys 
+		<if test="key !=null and key!=''">
+			where (name like '%${key}%' OR address LIKE '%${key}%' )
+		</if>
+	</select>
+	
+	<select id="selectByPage" parameterType="com.zooori.pojo.QueryParameters" resultType="HashMap">
+		select * from demand_sys 
+		<if test="key !=null and key!=''">
+			where (name like '%${key}%' OR address LIKE '%${key}%' )
+		</if>
+		<if test="sort !=null and sort!='' and order !=null and order !=''">
+			Order by ${sort} ${order}
+		</if>
+		LIMIT ${page},${rows}
+	</select>
+	
+</mapper>

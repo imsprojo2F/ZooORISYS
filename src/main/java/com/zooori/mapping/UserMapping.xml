@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zooori.dao.UserMapper">
+	<resultMap id="BaseResultMap" type="com.zooori.pojo.User">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="uid" property="uid" jdbcType="VARCHAR" />
+		<result column="account" property="account" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="gender" property="gender" jdbcType="VARCHAR" />
+		<result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+		<result column="age" property="age" jdbcType="INTEGER" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+		<result column="mail" property="mail" jdbcType="VARCHAR" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="avatar" property="avatar" jdbcType="VARCHAR" />
+		<result column="sign_from" property="sign_from" jdbcType="INTEGER" />
+		<result column="last_login_time" property="last_login_time" jdbcType="INTEGER" />
+		<result column="login_count" property="login_count" jdbcType="INTEGER" />
+		<result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="update_time" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<insert id="add" parameterType="com.zooori.pojo.User">
+		insert into user (
+			uid,account,password,name,gender,birthday,age,phone,mail,address,avatar,sign_from,create_time
+		)values(
+			#{uid,jdbcType=VARCHAR},
+			#{account,jdbcType=VARCHAR},
+			#{password,jdbcType=VARCHAR},
+			#{name,jdbcType=VARCHAR},
+			#{gender,jdbcType=VARCHAR},
+			#{birthday,jdbcType=VARCHAR},
+			#{age,jdbcType=VARCHAR},
+			#{phone,jdbcType=VARCHAR},
+			#{mail,jdbcType=VARCHAR},
+			#{address,jdbcType=VARCHAR},
+			#{avatar,jdbcType=VARCHAR},
+			#{sign_from,jdbcType=VARCHAR},
+			NOW()
+		)
+	</insert>
+	
+	<delete id="deleteById" parameterType="java.lang.String">
+		<![CDATA[DELETE from user where id in
+		]]>
+		<foreach item="item" collection="array" open="(" separator=","
+			close=")">
+			#{item}
+		</foreach>
+	</delete>
+	
+	<update id="updateById" parameterType="com.zooori.pojo.User">
+		update user
+		<set>
+			<if test="account != null">
+				account = #{account,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="gender != null">
+				gender = #{gender,jdbcType=VARCHAR},
+			</if>
+			<if test="birthday != null">
+				birthday = #{birthday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="age != null">
+				age = #{age,jdbcType=INTEGER},
+			</if>
+			<if test="phone != null">
+				phone = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="mail != null">
+				mail = #{mail,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				address = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="avatar != null">
+				avatar = #{avatar,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null">
+				city = #{city,jdbcType=VARCHAR},
+			</if>
+			<if test="signature != null">
+				signature = #{signature,jdbcType=VARCHAR},
+			</if>			
+			<if test="sign_from != null">
+				sign_from = #{sign_from,jdbcType=INTEGER},
+			</if>
+			<if test="type != null">
+				type = #{type,jdbcType=INTEGER},
+			</if>
+			<if test="last_login_time != null">
+				last_login_time = #{last_login_time,jdbcType=TIMESTAMP},
+			</if>		
+			<if test="login_count != null">
+				login_count = login_count+1,
+			</if>	
+			<if test="update_time != null">
+				update_time = #{update_time,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where uid = #{uid,jdbcType=VARCHAR}
+	</update>
+	
+	<select id="selectByAcc" resultMap="BaseResultMap">
+		select * from user where account = #{0} or mail=#{0}
+	</select>
+	
+	<select id="validateAccount" resultMap="BaseResultMap">
+		select * from user where (account = #{0} OR mail=#{0}) and password=#{1}
+	</select>
+	
+	<select id="getAccount"  resultMap="BaseResultMap">
+		select * from user  where id=#{0}
+	</select>
+	
+	<select id="listAll" resultMap="BaseResultMap"  parameterType="com.zooori.pojo.QueryParameters">
+		select * from user 
+		<if test="key !=null and key!=''">
+			where (account like '%${key}%' OR name LIKE '%${key}%' )
+		</if>
+	</select>
+	
+	<select id="selectByPage" parameterType="com.zooori.pojo.QueryParameters" resultType="HashMap">
+		select * from user 
+		<if test="key !=null and key!=''">
+			where (account like '%${key}%' OR name LIKE '%${key}%' )
+		</if>
+		<if test="sort !=null and sort!='' and order !=null and order !=''">
+			Order by ${sort} ${order}
+		</if>
+		LIMIT ${page},${rows}
+	</select>
+	
+</mapper>
