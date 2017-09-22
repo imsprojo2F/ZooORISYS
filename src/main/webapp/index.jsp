@@ -7,12 +7,17 @@
 <!--<![endif]-->
 <!DOCTYPE html >
 <head>
+<meta property="wb:webmaster" content="fe037905267ea260" />
+<meta name="baidu-site-verification" content="oN78diMuIY" />
 <meta charset="utf-8">
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<meta name="keywords" content="ZooORI,ZooORI诚信研究实验室,网站建设,网站开发,HTML5,CSS3,用户体验,整站开发,自媒体,微信公众号,系统开发,系统优化,网页设计,微信小程序">
-<meta name="description" content="ZooORI是一支非盈利专业于从事研究人类科学发展、自然科学发展、宇宙科学发展的国际科研机构。机构创立于上世纪10年代末至今已愈百年历史，于百年历史发展中，机构取得了斐然的成就。自最初四人团队已发展至今超10万以上科研人员贡献于各项科学研究，各国均有特设独立部门 服务于ZooORI。研究室所有与职人员均选自各领域卓越人才，他们致力于人类各领域科学发展研究，所有研究经费均来自于各国公立基金、国际科学发展研究基金、各大国际知名企业及个人，现特设ZooORI.cn为中国区基金募集专属机构。">
+<meta name="keywords" content="ZooORI、ZooORI.才华有限公司、才华有限公司、网站建设、网站开发、HTML5、CSS3、用户体验、整站开发、自媒体、微信公众号、系统开发、系统优化、网页设计、微信小程序、企业建站、网站优化、知乎、人生、知乎人生">
+<meta name="description" content="ZooORI是一支专业的互联网科技队伍，主要从事网站建设，软件开发，系统开发，模板制作。专为中小企业提供一站式在线建站服务的平台。无需懂技术代码，无需租用空间，利用完善、智能的系统，一键开通，即可轻松快速地创建企业官网、电商网站、手机网站以及微网站。以客户利益为出发点，ZooORI为客户规划、定制符合企业需求、带有营销价值的网络建站方案，提供从网站前期定位分析策划、技术架构，到网站界面设计、创意表现、站点架构搭建以及后续访问监控、维护、网站运营反馈建议等一系列服务。
+					   我们能结合企业的产品特点和网络需求，有效帮助企业达成网络营销效果，在用户体验、公信力塑造、搜索引擎优化等方面为客户带来实际价值。ZooORI以给客户带来实质价值为基点，为客户提供实战内容的培训、交流服务，帮助客户在网络营销上取得实际效果。">
 <link rel="shortcut  icon" type="image/x-icon" href="img/favicon.ico" media="screen"  />
+<!-- <!-- Favicon 
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" /> -->
 <link rel="stylesheet" href="css/flexslider.css" >
 <link rel="stylesheet" href="css/jquery.fancybox.css" >
 <link rel="stylesheet" href="css/main.css" >
@@ -41,11 +46,18 @@
 <script src="js/sweet-alert.js"></script>
 <!-- <script src="js/index.js"></script>  -->
 <script src="js/modernizr.js"></script> 
+<script src="http://apps.bdimg.com/libs/jquery-lazyload/1.9.5/jquery.lazyload.js"></script>
 
 
 <title>ZooORI.才华有限公司</title>
 <script type="text/javascript">
 $(function(){
+	
+	$("img.lazy").lazyload({
+		placeholder : "img/loading.gif",
+		effect : "fadeIn",
+		threshold : 400
+	});
 	
 	//判断是否为移动设备
 	var flag = isMobile();
@@ -252,10 +264,43 @@ function subDemand(){
 		}
 	});
 }
+window.onload = function () {
+	document.getElementById('loading-mask').style.display = 'none';
+}
 
 </script>
+<style>
+	#loading-mask {
+    background: #062734;
+    height: 100%;
+    left: auto;
+    right:auto
+    opacity: 1;
+    filter: alpha(opacity=100);
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 999999999;
+}
+
+.loading-img {
+    height: 100%;
+    left: auto;
+    right:auto;
+    position: fixed;
+    top: 25%;
+    width: 100%;
+}
+</style>
 </head>
 <body  ondragstart="return false"  onselectstart ="return false"  onbeforecopy="return false" >
+
+<div id="loading-mask">
+	<div class="loading-img">
+		<img alt="努力加载中..." src="img/preloader.gif"  />
+	</div>
+</div>
 
 <!-- header section -->
 <section class="banner" role="banner">
@@ -424,9 +469,11 @@ function subDemand(){
     <div class="section-header">
                 <h2 class="wow fadeInDown animated">产品案例</h2>
                 <p class="wow fadeInDown animated">One of the greatest bravery in life is the ability to maintain trust and love after experiencing deception and injury.<br> 人生最大的勇敢之一，就是经历欺骗和伤害之后，还能保持信任和爱的能力。</p>
+                <br>
+                <a style="text-decoration:none;font-size:18px;" href="http://www.lfqinghui.cn/" target="_blank">廊坊●庆辉建材有限公司</a>
             </div>
     <div class="row no-gutter">
-      <div class="col-lg-3 col-md-6 col-sm-6 work"> <a href="img/01.jpg"  class="work-box"> <img src="img/01.jpg"  alt="">
+      <div class="col-lg-3 col-md-6 col-sm-6 work"> <a href="img/01.jpg"  class="lazy work-box"> <img class="lazy"  data-original="img/01.jpg"  alt="">
         <div class="overlay">
           <div class="overlay-caption">
              <p><span class="icon icon-magnifying-glass"></span></p>
@@ -434,7 +481,7 @@ function subDemand(){
         </div>
         <!-- overlay --> 
         </a> </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 work"> <a href="img/02.jpg"  class="work-box"> <img src="img/02.jpg"  alt="">
+      <div class="col-lg-3 col-md-6 col-sm-6 work"> <a href="img/02.jpg"  class="lazy work-box"> <img class="lazy" data-original="img/02.jpg"  alt="">
         <div class="overlay">
           <div class="overlay-caption">
             <p><span class="icon icon-magnifying-glass"></span></p>
@@ -442,7 +489,7 @@ function subDemand(){
         </div>
         <!-- overlay --> 
         </a> </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 work"> <a href="img/03.jpg"  class="work-box"> <img src="img/03.jpg"  alt="">
+      <div class="col-lg-3 col-md-6 col-sm-6 work"> <a href="img/03.jpg"  class="lazy work-box"> <img class="lazy" data-original="img/03.jpg"  alt="">
         <div class="overlay">
           <div class="overlay-caption">
             <p><span class="icon icon-magnifying-glass"></span></p>
@@ -450,7 +497,7 @@ function subDemand(){
         </div>
         <!-- overlay --> 
         </a> </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 work"> <a href="img/04.jpg"  class="work-box"> <img src="img/04.jpg"  alt="">
+      <div class="col-lg-3 col-md-6 col-sm-6 work"> <a href="img/04.jpg"  class="lazy work-box"> <img class="lazy" data-original="img/04.jpg"  alt="">
         <div class="overlay">
           <div class="overlay-caption"> 
             <p><span class="icon icon-magnifying-glass"></span></p>
@@ -458,7 +505,7 @@ function subDemand(){
         </div>
         <!-- overlay --> 
         </a> </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 work"> <a href="img/05.jpg"  class="work-box"> <img src="img/05.jpg"  alt="">
+      <div class="col-lg-3 col-md-6 col-sm-6 work"> <a href="img/05.jpg"  class="lazy work-box"> <img class="lazy" data-original="img/05.jpg"  alt="">
         <div class="overlay">
           <div class="overlay-caption">
             <p><span class="icon icon-magnifying-glass"></span></p>
@@ -466,7 +513,7 @@ function subDemand(){
         </div>
         <!-- overlay --> 
         </a> </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 work"> <a href="img/06.jpg"  class="work-box"> <img src="img/06.jpg"  alt="">
+      <div class="col-lg-3 col-md-6 col-sm-6 work"> <a href="img/06.jpg"  class="lazy work-box"> <img class="lazy" data-original="img/06.jpg"  alt="">
         <div class="overlay">
           <div class="overlay-caption">
             <p><span class="icon icon-magnifying-glass"></span></p>
@@ -474,7 +521,7 @@ function subDemand(){
         </div>
         <!-- overlay --> 
         </a> </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 work"> <a href="img/07.jpg"  class="work-box"> <img src="img/07.jpg"  alt="">
+      <div class="col-lg-3 col-md-6 col-sm-6 work"> <a href="img/07.jpg"  class="lazy work-box"> <img class="lazy" data-original="img/07.jpg"  alt="">
         <div class="overlay">
           <div class="overlay-caption">
             <p><span class="icon icon-magnifying-glass"></span></p>
@@ -482,7 +529,7 @@ function subDemand(){
         </div>
         <!-- overlay --> 
         </a> </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 work"> <a href="img/08.jpg"  class="work-box"> <img src="img/08.jpg"  alt="">
+      <div class="col-lg-3 col-md-6 col-sm-6 work"> <a href="img/08.jpg"  class="lazy work-box"> <img class="lazy" data-original="img/08.jpg"  alt="">
         <div class="overlay">
           <div class="overlay-caption">
              <p><span class="icon icon-magnifying-glass"></span></p>
@@ -505,7 +552,7 @@ function subDemand(){
             </div>
     <div class="row">
       <div class="col-md-3 col-sm-6">
-        <div class="person"><img src="img/team-1.jpg"  alt="" class="img-responsive">
+        <div class="person"><img data-original="img/team-1.jpg"  alt="" class="lazy img-responsive">
           <div class="person-content">
             <h4>Imsprojo FAN</h4>
             <h5 class="role">Founder</h5>
@@ -520,7 +567,7 @@ function subDemand(){
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
-        <div class="person"> <img src="img/team-2.jpg"  alt="" class="img-responsive">
+        <div class="person"> <img data-original="img/team-2.jpg"  alt="" class="lazy img-responsive">
           <div class="person-content">
             <h4>Robin Zhang</h4>
             <h5 class="role">Creative</h5>
@@ -535,7 +582,7 @@ function subDemand(){
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
-        <div class="person"> <img src="img/team-3.jpg"  alt="" class="img-responsive">
+        <div class="person"> <img data-original="img/team-3.jpg"  alt="" class="lazy img-responsive">
           <div class="person-content">
             <h4>Alison Lin</h4>
             <h5 class="role">Technical</h5>
@@ -550,7 +597,7 @@ function subDemand(){
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
-        <div class="person"> <img src="img/team-4.jpg"  alt="" class="img-responsive">
+        <div class="person"> <img data-original="img/team-4.jpg"  alt="" class="lazy img-responsive">
           <div class="person-content">
             <h4>Vintes Mars</h4>
             <h5 class="role">Marketing</h5>
@@ -658,9 +705,16 @@ function subDemand(){
 			<center>
 				<a href="#">关于我们</a> - <a href="#">广告合作</a> - 
 				<a href="#">联系我们</a> <!-- - <a href="#">免责声明</a> - 
-				<a href="#">在线投稿</a>  -->
+				<a href="#">在线投稿</a>  --><br>
+				友情链接:
+					<a href="https://www.zhihu.com/" target="_blank">知乎</a>
+					<a href="http://weibo.com/" target="_blank">新浪微博</a>
+					<a href="http://music.163.com/" target="_blank">网易云音乐</a>
+					<a href="https://www.taobao.com/" target="_blank">淘宝</a>
+					<a href="https://www.baidu.com/" target="_blank">百度</a>
 			</center>
-			<center>©CopyRight  2014-2017 ZooORI.Net Inc All Rights Reserved. ZooORI 版权所有</center>
+			<center>©CopyRight  2014-2017 ZooORI.Net Inc All Rights Reserved. ZooORI 版权所有<br/>
+			<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1264493493'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1264493493%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
 		</div>
 </div>
 <!-- 客服 -->
