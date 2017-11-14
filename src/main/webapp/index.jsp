@@ -271,7 +271,7 @@ window.onload = function () {
 </script>
 <style>
 	#loading-mask {
-    background: #062734;
+    background: #222021;
     height: 100%;
     left: auto;
     right:auto
