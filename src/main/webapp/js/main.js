@@ -76,7 +76,7 @@ function toInvestigate(isPhone){
 	addCookie('isToSurvey', true, 1, '/');
 	isToSurvey = true;
 	swal({
-		  title: "我们有个计划需要您的决策",
+		  title: "我们有个调研需要您的参与",
 		  text: "是否前往？",
 		  type: "info",
 		  showCancelButton: true,

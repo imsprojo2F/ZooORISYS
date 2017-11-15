@@ -2,8 +2,35 @@
 
 var survey01,survey02,survey03,survey04,survey05,survey06,survey07,survey08,survey09,survey10,survey11,
 survey11,survey12,survey13,survey14,survey15,survey16,survey17,survey18,survey19;
+var surveyType = 0;
 $(function(){
 			
+			$('tr').css('cursor','pointer');
+			$(".tableradio tr").slice(1).each(function(){  
+		        var p = this;
+		        
+		        ++surveyType;
+		        console.log("surveyType---------"+surveyType);
+		        
+		        if(surveyType!=9&&surveyType!=10&&surveyType!=11){
+		        	 $(this).children().slice(1).click(function(){  
+				            $($(p).children()[0]).children().each(function(){
+				            	
+				                if(this.type=="radio"){  
+				                    if(!this.checked){  
+				                        this.checked = true;
+				                        shownewts_next();
+				                    }else{  
+				                        this.checked = false;  
+				                    }  
+				                }  
+				            });  
+				        });  
+		        	
+		        }
+		        
+		    });
+	
 			
 			$('#pre_').css("display","none");
     		$('#next_').css("display","none");
@@ -102,7 +129,7 @@ $(function(){
        function subSurvey(){
     	   var mail = $('#mail').val().trim();
     	   if(!mail){
-    		   swal("还没填写邮箱了啦", "「	每一次联系总能让彼此走的更近」", "error");
+    		   swal("还没填写邮箱喔", "「	每一次联系总能让彼此走的更近」", "error");
     		   return;
     	   }else{
     		   console.log(survey01);
@@ -154,7 +181,7 @@ $(function(){
 									}
 								},1000);
 							}else{
-								swal("服务器不小心被外星人带走了", "稍后再试吧", "error");
+								swal("服务器不小心被汪星人带走了", "稍后再试吧", "error");
 							}
 						}
 					});

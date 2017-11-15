@@ -47,9 +47,65 @@
 	    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
 	    return bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM ;
 	}
+	
+	function permit(val){
+    	$('#next').show(200);
+    }
+    
+    var swalNum = 0;
+    function toSend(val){
+    	if(!val){
+    		if(swalNum==0){
+    			swal("写点建议呗", "来都来了", "info");
+    			swalNum = swalNum+1;
+    		}else if(swalNum==1){
+    			swal("不就写点建议嘛", "都第2次了", "info");
+    			swalNum = swalNum+1;
+    		}else {
+    			swalNum = swalNum+1;
+    			swal("人家真的很需要了啦", "都第"+swalNum+"次了,哼..", "info");
+    			
+    		}
+    		
+    	}
+    }
+    window.onload = function () {
+    	document.getElementById('loading-mask').style.display = 'none';
+    }
 	</script>
+	<style>
+	#loading-mask {
+    background: #222021;
+    height: 100%;
+    left: auto;
+    right:auto
+    opacity: 1;
+    filter: alpha(opacity=100);
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 999999999;
+}
+
+.loading-img {
+    height: 100%;
+    left: auto;
+    right:auto;
+    position: fixed;
+    top: 25%;
+    width: 100%;
+}
+</style>
 </head>
 <body id="body">
+
+	<div id="loading-mask">
+		<div class="loading-img">
+			<img alt="努力加载中..." src="img/preloader.gif"  />
+		</div>
+	</div>
+
 	<a href="index.jsp" target="_blank">
 	<div  class="nav">
 		<span style="color:#67bef9;font-size:40px;">Z<span style="color: #97EA74;">oo</span>ORI</span>
@@ -142,17 +198,17 @@
 							<td style="width:15px;"><input id="R9" type="radio" value="对下属员工极其好的老板,<br>就是给自己开的薪资有点吃紧,<br>有点吃紧,<br>有点紧,<br>紧,<br>。" name="survey03" /></td>
 							<td ><label for="R9">￥800&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
 						</tr>
-						<tr>
+						<tr onclick="javaascript:void(0);">
 							<td style="width:15px;"><input id="R10" type="radio" disabled="true" name="survey03" /></td>
-							<td><label for="R10">￥15000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+							<td><label for="R10">$15000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
 						</tr>
-						<tr >
+						<tr onclick="javaascript:void(0);">
 							<td style="width:15px;"><input id="R11" type="radio" disabled="true" name="survey03" /></td>
-							<td><label for="R11">￥25000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+							<td><label for="R11">$25000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
 						</tr>
-						<tr style="border-bottom:none;">
+						<tr style="border-bottom:none;" onclick="javaascript:void(0);">
 							<td style="width:15px;"><input id="R12" type="radio" disabled="true" name="survey03" /></td>
-							<td><label for="R12">￥35000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+							<td><label for="R12">$35000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
 						</tr>
 					</table>
 				</div>
@@ -571,7 +627,7 @@
       			对于所有您使用过的APP及网站系统中,是否有哪些功能暂不能满足您的需求,或您所希望的APP/网站系统该有哪些功能？
       		</div>
 				<div>
-					<textarea onblur="toSend(this.value)" name="demand" id="demand" cols="" rows=""  placeholder="您的功能需求或建议"></textarea>
+					<textarea onclick="permit(this.value)" onblur="toSend(this.value)" name="demand" id="demand" cols="" rows=""  placeholder="您的功能需求或建议"></textarea>
 				</div>
       	</div>
       </li>
