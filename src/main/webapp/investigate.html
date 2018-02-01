@@ -767,7 +767,14 @@
 		document.getElementsByTagName('body')[0].addEventListener('touchmove',function(e){
 		  e.preventDefault();
 		  e.stopPropagation();
-		  swal("火星人来袭", "滑动已被禁止", "error");
+		  //swal("火星人来袭", "滑动已被禁止", "error");
+		  swal({
+			type: 'error',
+			title: "火星人来袭",
+			text: "滑动已被禁止",
+			/*imageUrl: imagePath,*/
+			timer: 1000
+		});
 		},false);
 	   
 	   fkpage = $('.myfkpage').FKPageTransitions();
