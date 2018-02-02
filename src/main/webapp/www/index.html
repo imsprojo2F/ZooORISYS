@@ -31,6 +31,10 @@
 			<audio style="display:none; height: 0" id="bg-music" preload="auto" src="mp3/If I Should Return.mp3" loop="loop"></audio>
 		</div>
 		
+		<div id="caculate" style="display:none">
+			<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1264493493'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1264493493%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+		</div>
+		
 		<div id="loading_circle">
 			<div id="loading-center">
 				<div id="loading-center-absolute">
@@ -214,6 +218,7 @@
 				$('#loading_circle').fadeOut(100);
 				autoPlayMusic();
 				audioAutoPlay();
+				
 			}
 			//音乐自动播放
 			$(document).ready(function(){
@@ -817,5 +822,6 @@
 				});
 			}
 		</script>
+		
 </body>
 </html>
