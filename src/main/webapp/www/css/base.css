@@ -466,7 +466,8 @@ main {
 }
 
 .word--03 .char15,
-.word--03 .char16{
+.word--03 .char16,
+.word--03 .char17{
 	color: #4cabef;
 }
 
@@ -482,6 +483,8 @@ main {
 	color: #4cabef;
 }
 
+.word--06 .char10,
+.word--06 .char11,
 .word--06 .char12,
 .word--06 .char13 {
 	color: #4cabef;
@@ -498,8 +501,136 @@ main {
 	color: #4cabef;
 }
 
+.word--09 .char3,
+.word--09 .char4,
 .word--09 .char5,
 .word--09 .char6 {
+	color: #4cabef;
+}
+
+
+.word--001 {
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 15vw;
+}
+
+.word--002 {
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 13vw;
+	color: #000;
+}
+
+.word--003 {
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 13vw;
+	color: #ffffff;
+}
+
+.word--004 {
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 11vw;
+	color: #000;
+}
+
+.word--005 {
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 13vw;
+	color: #ffffff;
+}
+
+.word--006 {
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 11vw;
+	color: #000;
+}
+
+.word--007 {
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 9vw;
+	color: #ffffff;
+}
+
+.word--008 {
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 13vw;
+	color: #000;
+}
+
+.word--009 {
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 10vw;
+	color: #ffffff;
+}
+
+.word--001 .char5,
+.word--001 .char6 {
+	color: #4cabef;
+}
+
+.word--002 .char7,
+.word--002 .char8 {
+	color: #4cabef;
+}
+
+.word--003 .char5,
+.word--003 .char6{
+	color: #4cabef;
+}
+
+.word--004 .char5,
+.word--004 .char6,
+.word--004 .char7,
+.word--004 .char8{
+	color: #4cabef;
+}
+
+.word--005 .char8,
+.word--005 .char9 {
+	color: #4cabef;
+}
+
+.word--006 .char5,
+.word--006 .char6,
+.word--006 .char7,
+.word--006 .char8 {
+	color: #4cabef;
+}
+
+.word--007 .char3,
+.word--007 .char4,
+.word--007 .char5,
+.word--007 .char6 {
+	color: #4cabef;
+}
+
+.word--008 .char3,
+.word--008 .char4,
+.word--008 .char5,
+.word--008 .char6 {
+	color: #4cabef;
+}
+
+.word--009 .char3,
+.word--009 .char4,
+.word--009 .char5 {
 	color: #4cabef;
 }
 

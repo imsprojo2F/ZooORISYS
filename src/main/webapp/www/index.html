@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 	<title id="title">ONSmile</title>
 	<link rel="shortcut  icon" type="image/x-icon" href="img/favicon.ico" media="screen"  />
 	<link rel="stylesheet" type="text/css" href="css/base.css" />
@@ -15,17 +15,35 @@
 	<link href="loading/css/Icomoon/style.css" rel="stylesheet" type="text/css" />
 	<!--loading end-->
 	<script src="js/cookie.js"></script>
+	<script src="js/formal.js"></script>
 	<!--sweet alert start-->
 	<link rel="stylesheet" href="sweetalert/sweet-alert.css">
 	<script src="sweetalert/sweet-alert.js"></script>
 	<!--sweet alert end-->
 	<script src="js/jquery-1.11.0.min.js">
 	
+	
 	<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
 
 </head>
 <body class="demo-1">
-		<div id="player" style="display:none"></div>
+		<div id="player" style="display:none">
+			<audio style="display:none; height: 0" id="bg-music" preload="auto" src="mp3/If I Should Return.mp3" loop="loop"></audio>
+		</div>
+		
+		<div id="loading_circle">
+			<div id="loading-center">
+				<div id="loading-center-absolute">
+					<div class="object" id="object_one"></div>
+					<div class="object" id="object_two" style="left:20px;"></div>
+					<div class="object" id="object_three" style="left:40px;"></div>
+					<div class="object" id="object_four" style="left:60px;"></div>
+					<div class="object" id="object_five" style="left:80px;"></div>
+				</div>
+			</div> 
+		</div>
+			
+		
 		<div style="display:none" id="loading">
 			<div id="loading_wrap">
 				<canvas id="c" ></canvas>
@@ -132,12 +150,55 @@
 					</div>
 					<div class="slide">
 						<div class="slide__bg slide__bg--9"></div>
-						<h2 id="t19" style="font-size:12vw" class="word word--09">愿,勿忘初心</h2>
+						<h2 id="t19" style="font-size:12vw" class="word word--09">愿,无疾无忧</h2>
 					</div>
 				</div>
 				<nav class="slidenav" style="display: none;">
 					<button id="pre2" class="slidenav__item slidenav__item--prev"><svg class="icon icon--navarrow"><use xlink:href="#icon-nav-arrow"></use></svg></button>
 					<button id="next2" class="slidenav__item slidenav__item--next"><svg class="icon icon--navarrow"><use xlink:href="#icon-nav-arrow"></use></svg></button>
+				</nav>
+				
+				<div id="content03" style="display:none" class="slideshow">
+					<div class="slide slide--current">
+						<div class="slide__bg slide__bg--1"></div>
+						<h4 id="t21"  style="font-size:9vw;display:none" class="word word--001">愿,百岁安生不离笑</h4>
+					</div>
+					<div class="slide">
+						<div class="slide__bg slide__bg--2"></div>
+						<h4 id="t22" style="font-size:9vw" class="word word--002">愿,活得烈马青葱</h4>
+					</div>
+					<div class="slide">
+						<div class="slide__bg slide__bg--3"></div>
+						<h2 id="t23" style="font-size:9vw" class="word word--003">愿,无邪有人懂</h2>
+					</div>
+					<div class="slide">
+						<div class="slide__bg slide__bg--4"></div>
+						<h2 id="t24" style="font-size:6vw" class="word word--004">愿,一生笑颦如花,温暖长晴</h2>
+					</div>
+					<div class="slide">
+						<div class="slide__bg slide__bg--5"></div>
+						<h2 id="t25" style="font-size:7vw" class="word word--005">愿,时光能缓,故人不散</h2>
+					</div>
+					<div class="slide">
+						<div class="slide__bg slide__bg--6"></div>
+						<h2 id="t26" style="font-size:8vw" class="word word--006">愿,你我有梦为马随处可栖</h2>
+					</div>
+					<div class="slide">
+						<div class="slide__bg slide__bg--7"></div>
+						<h2 id="t27" style="font-size:8vw" class="word word--007">愿,能哭能笑能尽欢</h2>
+					</div>
+					<div class="slide">
+						<div class="slide__bg slide__bg--8"></div>
+						<h2 id="t28" style="font-size:12vw" class="word word--008">愿,勿忘初心</h2>
+					</div>
+					<div class="slide">
+						<div class="slide__bg slide__bg--9"></div>
+						<h2 id="t29" style="font-size:18vw" class="word word--009">愿,大富贵</h2>
+					</div>
+				</div>
+				<nav class="slidenav" style="display: none;">
+					<button id="pre3" class="slidenav__item slidenav__item--prev"><svg class="icon icon--navarrow"><use xlink:href="#icon-nav-arrow"></use></svg></button>
+					<button id="next3" class="slidenav__item slidenav__item--next"><svg class="icon icon--navarrow"><use xlink:href="#icon-nav-arrow"></use></svg></button>
 				</nav>
 				
 			</div>
@@ -150,7 +211,9 @@
 		<script>
 
 			window.onload = function () {
-				//document.getElementById('loading').style.display = 'none';
+				$('#loading_circle').fadeOut(100);
+				autoPlayMusic();
+				audioAutoPlay();
 			}
 			//音乐自动播放
 			$(document).ready(function(){
@@ -162,169 +225,26 @@
 				console.log(i);
 				$('#title').html('才华有限公司');
 				var name = arr[0];
-				$('#player').append('<audio id="bg-music" style="display:none; height: 0" id="bg-music" preload="auto" src="mp3/'+name+'" loop="loop"></audio>')
+				//$('#player').append('<audio id="bg-music" style="display:none; height: 0" id="bg-music" preload="auto" src="mp3/'+name+'" loop="loop"></audio>')
 			});
 
 			$(function(){
+				start();
 				
-				if(getCookieValue('volume')){
-					$('#loading').fadeIn(200);
-					autoPlayMusic();
-					audioAutoPlay();
-					formal();
-				}else{
-					swal({
-						  type:'error',
-						  title: "试图打开音量",
-						  text: "结果被拒绝了..",
-						  //timer: 2000
-						  showCancelButton: false,
-						  confirmButtonColor: "rgb(242, 68, 35)",
-						  confirmButtonText: "好吧",
-						  closeOnConfirm: true
-						},
-						function(){
-							addCookie('volume',true,1,'/');
-							$('#loading').fadeIn(200);
-							autoPlayMusic();
-							audioAutoPlay();
-							formal();
-						}
-						
-					);
-				}
+				/* var audio = document.getElementById("bg-music");
+				audio.addEventListener("canplaythrough",function(){
+				    console.log("mp3加载完成！");
+				    $('#loading_circle').fadeOut(100);
+					start();
+				},false); */
+				
+				/* setTimeout(function(){
+					$('#loading_circle').fadeOut(100);
+					start();
+				},5000); */
+				
 			});
 			
-			function formal(){
-				setTimeout(function(){
-					$('#loading').fadeOut(50);
-					$('#t1').fadeIn(100);
-					setTimeout(function(){
-						$('#next').trigger('click');
-						setTimeout(function(){
-							$('#next').trigger('click');
-							setTimeout(function(){
-								$('#next').trigger('click');
-								setTimeout(function(){
-									$('#next').trigger('click');
-									setTimeout(function(){
-										$('#next').trigger('click');
-										setTimeout(function(){
-											$('#next').trigger('click');
-											setTimeout(function(){
-												$('#next').trigger('click');
-												setTimeout(function(){
-													$('#next').trigger('click');
-													setTimeout(function(){
-														$('#content01').fadeOut(100);
-														$('#content02').fadeIn(100);
-														$('#t11').fadeIn(3000);
-														setTimeout(function(){
-															$('#next2').trigger('click');
-															setTimeout(function(){
-																$('#t11').html('愿,大富贵');
-																$('#t11').css('font-size','18vw');
-																$('#next2').trigger('click');
-																setTimeout(function(){
-																	$('#next2').trigger('click');
-																	setTimeout(function(){
-																		$('#next2').trigger('click');
-																		setTimeout(function(){
-																			$('#next2').trigger('click');
-																			setTimeout(function(){
-																				$('#next2').trigger('click');
-																				setTimeout(function(){
-																					$('#next2').trigger('click');
-																					setTimeout(function(){
-																						$('#next2').trigger('click');
-																						setTimeout(function(){
-																							$('#next2').trigger('click');
-																							setTimeout(function(){
-																								alertFire();
-																							},10000);//烟火
-																						},4500);//愿,大富贵
-																					},4500);//勿忘初心
-																				},4500);//温暖相拥
-																			},4500);//且以深情共白头
-																		},4500);//佑余岁月无忧
-																	},4500);//看烈焰繁花
-																},4500);//或两败俱伤
-															},4500);//梦醒时见ta
-														},4500);//当七十岁之最爱
-													},4000);//归来仍是少年
-												},5000);//期,未至之于尔
-											},4500);//往事难守
-										},4500);//或闲云野鹤,浮世沉沦
-									},4500);//纵使相逢不识缘
-								},4200);//行将路远之艰
-							},4500);//何人喜孤烈独酒
-						},4500);//畏夜路者众
-					},4000);//难掩期许
-				},10000);//岁暮之殊
-			}
-			
-			function alertFire(){
-				$('#content02').fadeOut(100);
-				swal({
-						  title: "",
-						  text: "人生而时属平凡\n只愿如灿烂烟火",
-						  type: "info",
-						  showCancelButton: false,
-						  confirmButtonColor: "rgb(242, 68, 35)",
-						  confirmButtonText: "开",
-						  closeOnConfirm: true
-						},
-
-						function(){
-							$('#bg_fireworks').fadeIn(100);
-							$('.bg_fireworks').fireworks({ 
-							  sound: false, // sound effect
-							  opacity: 1, 
-							  width: '100%', 
-							  height: '100%' 
-							});
-
-					});
-			}
-			
-			function audioAutoPlay() {
-				var audio = document.getElementById('bg-music');
-				audio.play();
-				document.addEventListener("WeixinJSBridgeReady", function () {
-					audio.play();
-				}, false);
-			}
-			// 音乐播放
-			function autoPlayMusic() {
-				// 自动播放音乐效果，解决浏览器或者APP自动播放问题
-				function musicInBrowserHandler() {
-					musicPlay(true);
-					document.body.removeEventListener('touchstart', musicInBrowserHandler);
-				}
-				document.body.addEventListener('touchstart', musicInBrowserHandler);
-				// 自动播放音乐效果，解决微信自动播放问题
-				function musicInWeixinHandler() {
-					musicPlay(true);
-					document.addEventListener("WeixinJSBridgeReady", function () {
-						musicPlay(true);
-					}, false);
-					document.removeEventListener('DOMContentLoaded', musicInWeixinHandler);
-				}
-				document.addEventListener('DOMContentLoaded', musicInWeixinHandler);
-			}
-			function musicPlay(isPlay) {
-				var media = document.querySelector('#bg-music');
-				if (isPlay && media.paused) {
-					media.play();
-				}
-				if (!isPlay && !media.paused) {
-					media.pause();
-				}
-			}
-
-			
-
-
 			{
 				const effects = [
 					// Effect 1
@@ -881,6 +801,9 @@
 				document.querySelector('#pre2').addEventListener('click', () => slideshow2.show('prev') );
 				document.querySelector('#next2').addEventListener('click', () => slideshow2.show('next') );
 				
+				const slideshow3 = new Slideshow(document.querySelector('#content03'));
+				document.querySelector('#pre3').addEventListener('click', () => slideshow3.show('prev') );
+				document.querySelector('#next3').addEventListener('click', () => slideshow3.show('next') );
 				
 				
 				document.addEventListener('keydown', (ev) => {
