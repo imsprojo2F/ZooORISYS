@@ -28,6 +28,8 @@
 			}
 
 			function formal(){
+				autoPlayMusic();
+				audioAutoPlay();
 				setTimeout(function(){
 					$('#loading').fadeOut(50);
 					$('#t1').fadeIn(100);
@@ -117,7 +119,7 @@
 							},4500);//何人喜孤烈独酒
 						},4500);//畏夜路者众
 					},4000);//难掩期许
-				},11000);//岁暮之殊
+				},10000);//岁暮之殊
 			}
 			
 			function alertFire(){
