@@ -361,7 +361,7 @@ main {
 	color: #4cabef;
 }
 
-.word--6 .char5 {
+.word--6 .char6 {
 	color: #4cabef;
 }
 
@@ -607,10 +607,10 @@ main {
 	color: #4cabef;
 }
 
+.word--006 .char3,
+.word--006 .char4,
 .word--006 .char5,
-.word--006 .char6,
-.word--006 .char7,
-.word--006 .char8 {
+.word--006 .char6 {
 	color: #4cabef;
 }
 
@@ -623,14 +623,14 @@ main {
 
 .word--008 .char3,
 .word--008 .char4,
-.word--008 .char5,
-.word--008 .char6 {
+.word--008 .char5{
 	color: #4cabef;
 }
 
 .word--009 .char3,
-.word--009 .char4,
-.word--009 .char5 {
+.word--009 .char4, 
+.word--009 .char5,
+.word--009 .char6 {
 	color: #4cabef;
 }
 
